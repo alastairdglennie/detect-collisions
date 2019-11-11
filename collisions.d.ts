@@ -5,6 +5,7 @@
  * @class Body
  */
 export abstract class Body {
+    id: number;
     x: number;
     y: number;
     padding: number;
@@ -45,13 +46,14 @@ export abstract class Body {
 export class Circle extends Body {
     /**
      * @constructor
+     * @param {number} id
      * @param {number} [x = 0] The starting X coordinate
      * @param {number} [y = 0] The starting Y coordinate
      * @param {number} [radius = 0] The radius
      * @param {number} [scale = 1] The scale
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
      */
-    constructor(x?: number, y?: number, radius?: number, scale?: number, padding?: number);
+    constructor(id: number, x?: number, y?: number, radius?: number, scale?: number, padding?: number);
     radius: number;
     scale: number;
 }
@@ -65,6 +67,7 @@ export class Circle extends Body {
 export class Polygon extends Body {
     /**
      * @constructor
+     * @param {number} id
      * @param {number} [x = 0] The starting X coordinate
      * @param {number} [y = 0] The starting Y coordinate
      * @param {number[][]} [points = []] An array of coordinate pairs making up the polygon - [[x1, y1], [x2, y2], ...]
@@ -73,7 +76,7 @@ export class Polygon extends Body {
      * @param {number} [scale_y = 1] The starting scale long the Y axis
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
      */
-    constructor(x?: number, y?: number, points?: number[][], angle?: number, scale_x?: number, scale_y?: number, padding?: number);
+    constructor(id: number, x?: number, y?: number, points?: number[][], angle?: number, scale_x?: number, scale_y?: number, padding?: number);
     angle: number;
     scale_x: number;
     scale_y: number;
@@ -86,7 +89,7 @@ export class Polygon extends Body {
  * @extends {Body}
  */
 export class Point extends Body {
-    constructor(x?: number, y?: number, padding?: number);
+    constructor(id: number, x?: number, y?: number, padding?: number);
 }
 
 /**
@@ -122,7 +125,7 @@ export class Collisions {
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
      * @returns {Circle}
      */
-    createCircle(x?: number, y?: number, radius?: number, scale?: number, padding?: number): Circle;
+    createCircle(id: number, x?: number, y?: number, radius?: number, scale?: number, padding?: number): Circle;
 
     /**
      * Creates a {@link Polygon} and inserts it into the collision system
@@ -135,7 +138,7 @@ export class Collisions {
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
      * @returns {Polygon}
      */
-    createPolygon(x?: number, y?: number, points?: number[][], angle?: number, scale_x?: number, scale_y?: number, padding?: number): Polygon;
+    createPolygon(id: number, x?: number, y?: number, points?: number[][], angle?: number, scale_x?: number, scale_y?: number, padding?: number): Polygon;
 
     /**
      * Creates a {@link Point} and inserts it into the collision system
@@ -144,7 +147,7 @@ export class Collisions {
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
      * @returns {Point}
      */
-    createPoint(x?: number, y?: number, padding?: number): Point;
+    createPoint(id: number, x?: number, y?: number, padding?: number): Point;
 
     /**
      * Creates a {@link Result} used to collect the detailed results of a collision test

@@ -20,6 +20,7 @@ class Collisions {
 
   /**
    * Creates a {@link Circle} and inserts it into the collision system
+   * @param {Number} [id] The body ID
    * @param {Number} [x = 0] The starting X coordinate
    * @param {Number} [y = 0] The starting Y coordinate
    * @param {Number} [radius = 0] The radius
@@ -27,8 +28,8 @@ class Collisions {
    * @param {Number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
    * @returns {Circle}
    */
-  createCircle (x = 0, y = 0, radius = 0, scale = 1, padding = 0) {
-    const body = new Circle(x, y, radius, scale, padding)
+  createCircle (id, x = 0, y = 0, radius = 0, scale = 1, padding = 0) {
+    const body = new Circle(id, x, y, radius, scale, padding)
 
     this._bvh.insert(body)
 
@@ -37,6 +38,7 @@ class Collisions {
 
   /**
    * Creates a {@link Polygon} and inserts it into the collision system
+   * @param {Number} [id] The body ID
    * @param {Number} [x = 0] The starting X coordinate
    * @param {Number} [y = 0] The starting Y coordinate
    * @param {Array<Number[]>} [points = []] An array of coordinate pairs making up the polygon - [[x1, y1], [x2, y2], ...]
@@ -46,8 +48,8 @@ class Collisions {
    * @param {Number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
    * @returns {Polygon}
    */
-  createPolygon (x = 0, y = 0, points = [[0, 0]], angle = 0, scale_x = 1, scale_y = 1, padding = 0) {
-    const body = new Polygon(x, y, points, angle, scale_x, scale_y, padding)
+  createPolygon (id, x = 0, y = 0, points = [[0, 0]], angle = 0, scale_x = 1, scale_y = 1, padding = 0) {
+    const body = new Polygon(id, x, y, points, angle, scale_x, scale_y, padding)
 
     this._bvh.insert(body)
 
@@ -56,13 +58,14 @@ class Collisions {
 
   /**
    * Creates a {@link Point} and inserts it into the collision system
+   * @param {Number} [id] The body ID
    * @param {Number} [x = 0] The starting X coordinate
    * @param {Number} [y = 0] The starting Y coordinate
    * @param {Number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
    * @returns {Point}
    */
-  createPoint (x = 0, y = 0, padding = 0) {
-    const body = new Point(x, y, padding)
+  createPoint (id, x = 0, y = 0, padding = 0) {
+    const body = new Point(id, x, y, padding)
 
     this._bvh.insert(body)
 

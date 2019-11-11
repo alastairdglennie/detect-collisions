@@ -7,6 +7,7 @@ const Body = require('./Body')
 class Polygon extends Body {
   /**
    * @constructor
+   * @param {Number} [id] The body ID
    * @param {Number} [x = 0] The starting X coordinate
    * @param {Number} [y = 0] The starting Y coordinate
    * @param {Array<Number[]>} [points = []] An array of coordinate pairs making up the polygon - [[x1, y1], [x2, y2], ...]
@@ -15,8 +16,8 @@ class Polygon extends Body {
    * @param {Number} [scale_y = 1] The starting scale long the Y axis
    * @param {Number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
    */
-  constructor (x = 0, y = 0, points = [], angle = 0, scale_x = 1, scale_y = 1, padding = 0) {
-    super(x, y, padding)
+  constructor (id, x = 0, y = 0, points = [], angle = 0, scale_x = 1, scale_y = 1, padding = 0) {
+    super(id, x, y, padding)
 
     /**
      * @desc The angle of the body in radians

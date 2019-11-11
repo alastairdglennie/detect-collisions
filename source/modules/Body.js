@@ -9,11 +9,13 @@ const SAT = require('./SAT')
 class Body {
   /**
    * @constructor
+   * @param {Number} [id] The body ID
    * @param {Number} [x = 0] The starting X coordinate
    * @param {Number} [y = 0] The starting Y coordinate
    * @param {Number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
    */
-  constructor (x = 0, y = 0, padding = 0) {
+  constructor (id, x = 0, y = 0, padding = 0) {
+    this.id = id
     /**
      * @desc The X coordinate of the body
      * @type {Number}
