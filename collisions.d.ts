@@ -118,6 +118,7 @@ export class Result {
 export class Collisions {
     /**
      * Creates a {@link Circle} and inserts it into the collision system
+     * @param {number} id
      * @param {number} [x = 0] The starting X coordinate
      * @param {number} [y = 0] The starting Y coordinate
      * @param {number} [radius = 0] The radius
@@ -129,6 +130,7 @@ export class Collisions {
 
     /**
      * Creates a {@link Polygon} and inserts it into the collision system
+     * @param {number} id
      * @param {number} [x = 0] The starting X coordinate
      * @param {number} [y = 0] The starting Y coordinate
      * @param {number[][]} [points = []] An array of coordinate pairs making up the polygon - [[x1, y1], [x2, y2], ...]
@@ -142,6 +144,7 @@ export class Collisions {
 
     /**
      * Creates a {@link Point} and inserts it into the collision system
+     * @param {number} id
      * @param {number} [x = 0] The starting X coordinate
      * @param {number} [y = 0] The starting Y coordinate
      * @param {number} [padding = 0] The amount to pad the bounding volume when testing for potential collisions
